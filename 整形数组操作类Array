@@ -1,0 +1,51 @@
+import java.util.Arrays;
+
+class Array{
+	private int [] data;
+	private int foot;//当前数据追加角标
+	public Array (int len){
+		if(len>0){
+			this.data=new int [len];
+		}else{
+			this.data=new int [1];
+		}
+	}
+	public boolean add(int data){//数据增加
+		if(this.foot<this.data.length){
+			this.data[this.foot++]=data;
+			return true;
+		}
+		return false;
+	}
+	public void increment(int len){//扩充的长度
+		int arr []=new int [this.data.length+len];//数组不能随便改变长度，只能新建了 
+		System.arraycopy(this.data, 0, arr, 0, this.data.length);
+		this.data=arr;//修改引用，产生垃圾。。。
+	}
+	public int [] getData(){
+		return this.data;
+	}
+}
+class SortArray extends Array{
+	public SortArray(int len){
+		super(len);//父类无参构造
+	}
+	public int [] getData(){
+		Arrays.sort(super.getData());
+		return super.getData();
+	}
+}
+public class TestA {
+	public static void main(String args[]) {
+		SortArray array = new SortArray(5);//传递个数
+		System.out.println(array.add(10));
+		System.out.println(array.add(2));
+		System.out.println(array.add(2));
+		System.out.println(array.add(98));
+		System.out.println(array.add(888));
+		System.out.println(array.add(3));//只有5个呀
+		for (int x=0;x<array.getData().length;x++){
+			System.out.print(array.getData()[x]+"、");
+		}
+	}
+}
