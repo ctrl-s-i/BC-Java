@@ -26,6 +26,7 @@ class Array{
 		return this.data;
 	}
 }
+//排序此数组
 class SortArray extends Array{
 	public SortArray(int len){
 		super(len);//父类无参构造
@@ -44,7 +45,7 @@ public class TestA {
 		System.out.println(array.add(98));
 		System.out.println(array.add(888));
 		System.out.println(array.add(3));//只有5个呀
-		for (int x=0;x<array.getData().length;x++){
+		for (int x=0;x<array.getData().length;x++){//输出
 			System.out.print(array.getData()[x]+"、");
 		}
 	}
